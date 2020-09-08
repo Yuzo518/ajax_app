@@ -16,11 +16,12 @@ class PostsController < ApplicationController
       #「post.checked」がtrue、つまり既読している
       post.update(checked: false)
     else
-      #「post.checked」がfalse、つまり既読していない
+      #「post.checked」がfalse、つまり既読していない  
       post.update(checked: true)
     end
-
+    #itemにupdateしたレコードを格納する
     item = Post.find(params[:id])
+    #jsonのデータ形式（ハッシュ）でchecked.jsに返却する
     render json: { post: item }
   end
 end
